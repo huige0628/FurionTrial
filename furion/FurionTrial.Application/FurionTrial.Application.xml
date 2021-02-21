@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FurionTrial.Application</name>
+    </assembly>
+    <members>
+        <member name="P:FurionTrial.Application.LoginResponseDto.UserId">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.LoginResponseDto.UserName">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.LoginResponseDto.AccessToken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.LoginResponseDto.ExipreTime">
+            <summary>
+            Token过期时间
+            </summary>
+        </member>
+        <member name="T:FurionTrial.Application.UserModuleDto">
+            <summary>
+            用户拥有模块数据
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserModuleDto.ModuleId">
+            <summary>
+            模块id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserModuleDto.ModuleName">
+            <summary>
+            模块名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserModuleDto.ParentModuleId">
+            <summary>
+            父模块id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserModuleDto.ParentModuleName">
+            <summary>
+            父模块名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserModuleDto.Url">
+            <summary>
+            模块地址
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserModuleDto.IsLeaf">
+            <summary>
+            是否叶子节点[0否 1是]
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserModuleDto.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserModuleDto.Code">
+            <summary>
+            模块编码
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserModuleDto.Level">
+            <summary>
+            级别
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserModuleDto.SortNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:FurionTrial.Application.ISysRelevanceService.GetUserRoles(System.Int64)">
+            <summary>
+            获取用户角色
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysRelevanceService.GetUserModules(System.Int64)">
+            <summary>
+            获取用户模块
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysUserSerivce.GetUserById(System.Int64)">
+            <summary>
+            根据用户ID获取用户
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysUserSerivce.GetUserByName(System.String)">
+            <summary>
+            根据用户名称获取用户
+            </summary>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysUserSerivce.Login(System.String,System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysRelevanceService.GetUserRoles(System.Int64)">
+            <summary>
+            获取用户角色
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysRelevanceService.GetUserModules(System.Int64)">
+            <summary>
+            获取用户模块
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysUserSerivce.GetUserById(System.Int64)">
+            <summary>
+            根据用户ID获取用户
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysUserSerivce.GetUserByName(System.String)">
+            <summary>
+            根据用户名称获取用户
+            </summary>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysUserSerivce.Login(System.String,System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FurionTrial.Application.SystemAppService">
+            <summary>
+            系统服务接口
+            </summary>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.GetUserRoles(System.Int64)">
+            <summary>
+            获取用户角色
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.GetUserModules(System.Int64)">
+            <summary>
+            获取用户模块
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.GetUserById(System.Int64)">
+            <summary>
+            根据用户ID获取用户
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.Login(Microsoft.AspNetCore.Http.IHttpContextAccessor,FurionTrial.Application.LoginRequestDto)">
+            <summary>
+            登录
+            </summary>
+            <param name="httpContextAccessor"></param>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

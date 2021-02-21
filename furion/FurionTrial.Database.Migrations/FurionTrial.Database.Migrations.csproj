@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FurionTrial.EntityFramework.Core\FurionTrial.EntityFramework.Core.csproj" />
+  </ItemGroup>
+
+</Project>

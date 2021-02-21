@@ -1,0 +1,706 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FurionTrial.Core</name>
+    </assembly>
+    <members>
+        <member name="T:FurionTrial.Core.Entity.SysModule">
+            <summary>
+            模块表
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.ModuleId">
+            <summary>
+            模块id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.ModuleName">
+            <summary>
+            模块名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.ParentModuleId">
+            <summary>
+            父模块id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.ParentModuleName">
+            <summary>
+            父模块名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.Url">
+            <summary>
+            模块地址
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.IsLeaf">
+            <summary>
+            是否叶子节点[0否 1是]
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.Code">
+            <summary>
+            模块编码
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.Level">
+            <summary>
+            级别
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.SortNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.IsEnabled">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.CompanyId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.CreateDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.CreateUserId">
+            <summary>
+            创建人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.CreateUserName">
+            <summary>
+            创建人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.ModifyDate">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.ModifyUserId">
+            <summary>
+            修改人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.ModifyUserName">
+            <summary>
+            修改人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.DeleteDate">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.DeleteUserId">
+            <summary>
+            删除人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.DeleteUserName">
+            <summary>
+            删除人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModule.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:FurionTrial.Core.Entity.SysModuleElement">
+            <summary>
+            模块权限表
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.ElementId">
+            <summary>
+            按钮id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.ElementName">
+            <summary>
+            按钮名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.ModuleId">
+            <summary>
+            模块id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.SortNo">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.Code">
+            <summary>
+            权限值
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.DomId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.Attr">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.Script">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.Icon">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.Class">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.CreateDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.CreateUserId">
+            <summary>
+            创建人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.CreateUserName">
+            <summary>
+            创建人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.ModifyDate">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.ModifyUserId">
+            <summary>
+            修改人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.ModifyUserName">
+            <summary>
+            修改人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.DeleteDate">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.DeleteUserId">
+            <summary>
+            删除人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.DeleteUserName">
+            <summary>
+            删除人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysModuleElement.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:FurionTrial.Core.Entity.SysOrg">
+            <summary>
+            部门表
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.OrgId">
+            <summary>
+            部门id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.OrgName">
+            <summary>
+            部门名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.ParentOrgId">
+            <summary>
+            父级部门id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.ParentOrgName">
+            <summary>
+            父级部门名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.IsLeaf">
+            <summary>
+            是否叶子节点[0否 1是]
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.CascadeId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.IconName">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.Status">
+            <summary>
+            状态[0禁用 1启用 ]
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.SortNo">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.CompanyId">
+            <summary>
+            公司id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.CreateDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.CreateUserId">
+            <summary>
+            创建人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.CreateUserName">
+            <summary>
+            创建人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.ModifyDate">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.ModifyUserId">
+            <summary>
+            修改人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.ModifyUserName">
+            <summary>
+            修改人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.DeleteDate">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.DeleteUserId">
+            <summary>
+            删除人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.DeleteUserName">
+            <summary>
+            删除人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysOrg.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:FurionTrial.Core.Entity.SysRelevance">
+            <summary>
+            权限关联表
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.RelevanceId">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.Key">
+            <summary>
+            关联key
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.FirstId">
+            <summary>
+            关联主表主键id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.SecondId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.CreateDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.CreateUserId">
+            <summary>
+            创建人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.CreateUserName">
+            <summary>
+            创建人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.ModifyDate">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.ModifyUserId">
+            <summary>
+            修改人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.ModifyUserName">
+            <summary>
+            修改人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.DeleteDate">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.DeleteUserId">
+            <summary>
+            删除人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.DeleteUserName">
+            <summary>
+            删除人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRelevance.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:FurionTrial.Core.Entity.SysRole">
+            <summary>
+            角色表
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.RoleName">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.IsEnabled">
+            <summary>
+            是否启用[0否 1是]
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.CompanyId">
+            <summary>
+            公司id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.CreateDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.CreateUserId">
+            <summary>
+            创建人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.CreateUserName">
+            <summary>
+            创建人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.ModifyDate">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.ModifyUserId">
+            <summary>
+            修改人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.ModifyUserName">
+            <summary>
+            修改人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.DeleteDate">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.DeleteUserId">
+            <summary>
+            删除人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.DeleteUserName">
+            <summary>
+            删除人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysRole.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:FurionTrial.Core.Entity.SysUser">
+            <summary>
+            bestwo用户
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.UserName">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.UserCode">
+            <summary>
+            用户编号
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.Phone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.Qq">
+            <summary>
+            QQ
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.Sex">
+            <summary>
+            性别[0男 1女]
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.Avatar">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.Manager">
+            <summary>
+            上级
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.Job">
+            <summary>
+            岗位
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.Type">
+            <summary>
+            类型(0:普通,1:管理员)
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.LastLoginDate">
+            <summary>
+            最后登录时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.LastLoginIp">
+            <summary>
+            最后登录ip
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.IpOpen">
+            <summary>
+            是否放开IP访问[0否 1是]
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.CreateDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.CreateUserId">
+            <summary>
+            创建人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.CreateUserName">
+            <summary>
+            创建人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.ModifyDate">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.ModifyUserId">
+            <summary>
+            修改人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.ModifyUserName">
+            <summary>
+            修改人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.DeleteDate">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.DeleteUserId">
+            <summary>
+            删除人id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.DeleteUserName">
+            <summary>
+            删除人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Entity.SysUser.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="F:FurionTrial.Core.Enums.SysRelevanceEnum.SysRole_SysOrg">
+            <summary>
+            角色部门Key
+            </summary>
+        </member>
+        <member name="F:FurionTrial.Core.Enums.SysRelevanceEnum.SysRole_SysModule">
+            <summary>
+            角色模块key
+            </summary>
+        </member>
+        <member name="F:FurionTrial.Core.Enums.SysRelevanceEnum.SysRole_SysModule_Element">
+             <summary>
+            角色菜单key
+             </summary>
+        </member>
+        <member name="F:FurionTrial.Core.Enums.SysRelevanceEnum.SysUser_SysOrg">
+            <summary>
+            用户部门Key
+            </summary>
+        </member>
+        <member name="F:FurionTrial.Core.Enums.SysRelevanceEnum.SysUser_SysRole">
+            <summary>
+            用户角色Key
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.IUserManager.UserId">
+            <summary>
+            获取用户 Id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.IUserManager.User">
+            <summary>
+            获取用户信息
+            </summary>
+        </member>
+        <member name="F:FurionTrial.Core.UserManager._userRepository">
+            <summary>
+            用户仓储
+            </summary>
+        </member>
+        <member name="F:FurionTrial.Core.UserManager._httpContextAccessor">
+            <summary>
+            HttpContext 访问器
+            </summary>
+        </member>
+        <member name="F:FurionTrial.Core.UserManager._memoryCache">
+            <summary>
+            缓存
+            </summary>
+        </member>
+        <member name="M:FurionTrial.Core.UserManager.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor,SqlSugar.ISqlSugarRepository{FurionTrial.Core.Entity.SysUser},Microsoft.Extensions.Caching.Memory.IMemoryCache)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="httpContextAccessor"></param>
+            <param name="userRepository"></param>
+            <param name="memoryCache"></param>
+        </member>
+        <member name="P:FurionTrial.Core.UserManager.UserId">
+            <summary>
+            获取用户 Id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.UserManager.User">
+            <summary>
+            获取用户信息
+            </summary>
+        </member>
+    </members>
+</doc>
