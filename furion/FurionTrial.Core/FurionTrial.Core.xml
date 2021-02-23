@@ -4,6 +4,31 @@
         <name>FurionTrial.Core</name>
     </assembly>
     <members>
+        <member name="T:FurionTrial.Core.Dto.ApiPageRequest">
+            <summary>
+            请求接口参数
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Dto.ApiPageRequest.Page">
+            <summary>
+            页码
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Dto.ApiPageRequest.Limit">
+            <summary>
+            条数
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Dto.ApiPageRequest.Sort">
+            <summary>
+            排序字段
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.Dto.ApiPageRequest.Order">
+            <summary>
+            排序方式
+            </summary>
+        </member>
         <member name="T:FurionTrial.Core.Entity.SysModule">
             <summary>
             模块表

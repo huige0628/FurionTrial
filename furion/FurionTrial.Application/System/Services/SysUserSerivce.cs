@@ -1,6 +1,8 @@
 ﻿using Furion.DependencyInjection;
 using FurionTrial.Core.Entity;
+using Mapster;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
@@ -49,6 +51,33 @@ namespace FurionTrial.Application
         public SysUser Login(string userName,string password)
         {
             return dbClint.Queryable<SysUser>().Where(u => u.UserCode == userName && u.Password==password).First();
+        }
+
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public SqlSugarPagedList<UserListResponseDto> GetUserList(UserListRequestDto dto)
+        {
+            var query = dbClint.Queryable<SysUser>().Where(u => u.IsDeleted == false);
+            query.WhereIF(!string.IsNullOrEmpty(dto.UserName), u => u.UserName == dto.UserName);
+            int count = query.Count();
+            var list = query.Select(u=>new UserListResponseDto() 
+            { 
+                UserId=u.UserId,
+                UserCode=u.UserCode,
+                UserName=u.UserName
+            }).ToPagedList(dto.Page, dto.Limit);
+            //var result = list.Adapt<List<UserListResponseDto>>();
+            return list;
+            //return new PagedList()
+            //{
+            //    PageIndex = dto.Page,
+            //    PageSize = dto.Limit,
+            //    Items = result,
+            //    TotalCount = count
+            //};
         }
 
     }

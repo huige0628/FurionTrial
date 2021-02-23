@@ -24,6 +24,116 @@
             Token过期时间
             </summary>
         </member>
+        <member name="P:FurionTrial.Application.UserListRequestDto.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.UserName">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.UserCode">
+            <summary>
+            用户编号
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.Phone">
+            <summary>
+            电话
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.Qq">
+            <summary>
+            QQ
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.Sex">
+            <summary>
+            性别[0男 1女]
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.Avatar">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.Manager">
+            <summary>
+            上级
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.Job">
+            <summary>
+            岗位
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.Type">
+            <summary>
+            类型(0:普通,1:管理员)
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.LastLoginDate">
+            <summary>
+            最后登录时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.LastLoginIp">
+            <summary>
+            最后登录ip
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.IpOpen">
+            <summary>
+            是否放开IP访问[0否 1是]
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.CreateDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.CreateUserName">
+            <summary>
+            创建人名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.ModifyDate">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.ModifyUserName">
+            <summary>
+            修改人名称
+            </summary>
+        </member>
         <member name="T:FurionTrial.Application.UserModuleDto">
             <summary>
             用户拥有模块数据
@@ -115,6 +225,13 @@
             <param name="password"></param>
             <returns></returns>
         </member>
+        <member name="M:FurionTrial.Application.ISysUserSerivce.GetUserList(FurionTrial.Application.UserListRequestDto)">
+            <summary>
+            获取用户列表
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
         <member name="M:FurionTrial.Application.SysRelevanceService.GetUserRoles(System.Int64)">
             <summary>
             获取用户角色
@@ -151,6 +268,13 @@
             <param name="password"></param>
             <returns></returns>
         </member>
+        <member name="M:FurionTrial.Application.SysUserSerivce.GetUserList(FurionTrial.Application.UserListRequestDto)">
+            <summary>
+            获取用户列表
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
         <member name="T:FurionTrial.Application.SystemAppService">
             <summary>
             系统服务接口
@@ -182,6 +306,13 @@
             登录
             </summary>
             <param name="httpContextAccessor"></param>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.GetUserList(FurionTrial.Application.UserListRequestDto)">
+            <summary>
+            获取用户列表
+            </summary>
             <param name="dto"></param>
             <returns></returns>
         </member>

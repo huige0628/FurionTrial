@@ -1,4 +1,5 @@
 ﻿using FurionTrial.Core.Entity;
+using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,5 +31,12 @@ namespace FurionTrial.Application
         /// <param name="password"></param>
         /// <returns></returns>
         SysUser Login(string userName, string password);
+
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        SqlSugarPagedList<UserListResponseDto> GetUserList(UserListRequestDto dto);
     }
 }

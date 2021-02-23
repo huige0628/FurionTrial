@@ -7,6 +7,7 @@ using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -86,6 +87,18 @@ namespace FurionTrial.Application
             // 设置 Swagger 自动登录
             httpContextAccessor.SigninToSwagger(response.AccessToken);
             return response;
+        }
+
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [ApiDescriptionSettings(KeepName = true)]
+        [HttpPost]
+        public SqlSugarPagedList<UserListResponseDto> GetUserList([FromBody] UserListRequestDto dto)
+        {
+            return _sysUserSerivce.GetUserList(dto);
         }
 
     }
