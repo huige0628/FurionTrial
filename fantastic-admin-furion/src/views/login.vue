@@ -26,6 +26,7 @@
                     <span style="margin-right: 5px;">演示帐号一键登录：</span>
                     <el-button type="danger" size="mini" @click="testAccount('admin')">admin</el-button>
                     <el-button type="danger" size="mini" plain @click="testAccount('test')">test</el-button>
+                    <el-button type="danger" size="mini" plain @click="testAccount('llh')">llh</el-button>
                 </div>
             </el-form>
         </div>
@@ -91,6 +92,9 @@ export default {
         testAccount(account) {
             this.form.account = account
             this.form.password = '123456'
+            if (account == 'llh') {
+                this.form.password = 'y0B5bRoKHO0='
+            }
             this.handleLogin()
         }
     }

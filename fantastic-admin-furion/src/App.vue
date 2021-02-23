@@ -52,3 +52,8 @@ export default {
     height: 100%;
 }
 </style>
+<style>
+.page-main {
+    margin: 6px;
+}
+</style>

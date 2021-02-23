@@ -9,62 +9,64 @@ Vue.use(VueRouter)
 import Layout from '@/layout'
 import EmptyLayout from '@/layout/empty'
 
-const constantRoutes = [
-    {
-        path: '/login',
-        name: 'login',
-        component: () => import('@/views/login'),
+const constantRoutes = [{
+    path: '/login',
+    name: 'login',
+    component: () =>
+        import ('@/views/login'),
+    meta: {
+        title: '登录'
+    }
+},
+{
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    children: [{
+        path: 'dashboard',
+        name: 'dashboard',
+        component: () =>
+            import ('@/views/index'),
         meta: {
-            title: '登录'
+            title: store.state.settings.dashboardTitle
         }
     },
     {
-        path: '/',
-        component: Layout,
-        redirect: '/dashboard',
-        children: [
-            {
-                path: 'dashboard',
-                name: 'dashboard',
-                component: () => import('@/views/index'),
-                meta: {
-                    title: store.state.settings.dashboardTitle
-                }
-            },
-            {
-                path: 'personal',
-                component: EmptyLayout,
-                redirect: '/personal/setting',
-                meta: {
-                    title: '个人中心',
-                    breadcrumb: false
-                },
-                children: [
-                    {
-                        path: 'setting',
-                        name: 'personalSetting',
-                        component: () => import('@/views/personal/setting'),
-                        meta: {
-                            title: '个人设置'
-                        }
-                    },
-                    {
-                        path: 'edit/password',
-                        name: 'personalEditPassword',
-                        component: () => import('@/views/personal/edit.password'),
-                        meta: {
-                            title: '修改密码'
-                        }
-                    }
-                ]
-            },
-            {
-                path: 'reload',
-                name: 'reload',
-                component: () => import('@/views/reload')
+        path: 'personal',
+        component: EmptyLayout,
+        redirect: '/personal/setting',
+        meta: {
+            title: '个人中心',
+            breadcrumb: false
+        },
+        children: [{
+            path: 'setting',
+            name: 'personalSetting',
+            component: () =>
+                import ('@/views/personal/setting'),
+            meta: {
+                title: '个人设置'
             }
+        },
+        {
+            path: 'edit/password',
+            name: 'personalEditPassword',
+            component: () =>
+                import ('@/views/personal/edit.password'),
+            meta: {
+                title: '修改密码'
+            }
+        }
         ]
+    },
+    {
+        path: 'reload',
+        name: 'reload',
+        component: () =>
+            import ('@/views/reload')
     }
+    ]
+}
 ]
 
 import MultilevelMenuExample from './modules/multilevel.menu.example'
@@ -76,47 +78,57 @@ import PermissionExample from './modules/permission.example'
 import MockExample from './modules/mock.example'
 import VideosExample from './modules/videos.example'
 import ExTernalLinkExample from './modules/external.link.example'
+import System from './modules/system'
 
 // 当 children 不为空的主导航只有一项时，则隐藏
-let asyncRoutes = [
-    {
-        meta: {
-            title: '默认',
-            icon: 'sidebar-default'
-        },
-        children: [
-            MultilevelMenuExample,
-            BreadcrumbExample,
-            KeepAliveExample,
-            ComponentBasicExample,
-            ComponentExample,
-            PermissionExample,
-            MockExample
-        ]
+let asyncRoutes = [{
+    meta: {
+        title: '默认',
+        icon: 'sidebar-default'
     },
-    {
-        meta: {
-            title: '教程',
-            icon: 'sidebar-videos'
-        },
-        children: [
-            ...VideosExample
-        ]
+    children: [
+        MultilevelMenuExample,
+        BreadcrumbExample,
+        KeepAliveExample,
+        ComponentBasicExample,
+        ComponentExample,
+        PermissionExample,
+        MockExample
+    ]
+},
+{
+    meta: {
+        title: '教程',
+        icon: 'sidebar-videos'
     },
-    {
-        meta: {
-            title: '其它',
-            icon: 'sidebar-other'
-        },
-        children: [
-            ExTernalLinkExample
-        ]
-    }
+    children: [
+        ...VideosExample
+    ]
+},
+{
+    meta: {
+        title: '其它',
+        icon: 'sidebar-other'
+    },
+    children: [
+        ExTernalLinkExample
+    ]
+},
+{
+    meta: {
+        title: '系统',
+        icon: 'sidebar-other'
+    },
+    children: [
+        System
+    ]
+}
 ]
 
 const lastRoute = [{
     path: '*',
-    component: () => import('@/views/404'),
+    component: () =>
+        import ('@/views/404'),
     meta: {
         title: '404',
         sidebar: false
@@ -156,7 +168,7 @@ router.beforeEach(async(to, from, next) => {
         accessRoutes.forEach(route => {
             router.addRoute(route)
         })
-        next({ ...to, replace: true })
+        next({...to, replace: true })
     }
     if (store.state.menu.isGenerate) {
         store.commit('menu/setHeaderActived', to.path)
