@@ -78,15 +78,16 @@ export default {
             this.$emit('on-search')
         },
         onReset() {
-            this.model &&
-                Object.keys(this.model).forEach(k => {
-                    if (Array.isArray(this.model[k])) {
-                        this.model[k] = []
+            let that = this
+            that.model &&
+                Object.keys(that.model).forEach(k => {
+                    if (Array.isArray(that.model[k])) {
+                        that.model[k] = []
                     } else {
-                        this.model[k] = null
+                        that.model[k] = null
                     }
                 })
-            this.$emit('on-reset')
+            that.$emit('on-reset')
         },
         onExpand() {
             this.isMore = !this.isMore

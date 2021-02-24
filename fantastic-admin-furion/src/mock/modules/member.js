@@ -19,7 +19,7 @@ module.exports = [
         type: 'get',
         result: option => {
             let permissions = []
-            if (option.query.account == 'admin') {
+            if (option.query.account == 'admin' || option.query.account == 'llh') {
                 permissions = [
                     'permission.browse',
                     'permission.create',

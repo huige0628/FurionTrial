@@ -14,7 +14,7 @@ export default {
     },
     'GET /mock/member/permission': (req, res) => {
         let permissions = []
-        if (req.query.account == 'admin') {
+        if (req.query.account == 'admin' || option.query.account == 'llh') {
             permissions = [
                 'permission.browse',
                 'permission.create',
@@ -29,6 +29,8 @@ export default {
         return res.json({
             error: '',
             state: 1,
+            statusCode: 200,
+            succeeded: true,
             data: {
                 permissions
             }

@@ -21,7 +21,7 @@ const getters = {
 }
 
 const actions = {
-    login({commit}, data) {
+    login({ commit }, data) {
         return new Promise((resolve, reject) => {
             // 通过 mock 进行登录
             // api.post('mock/member/login', data).then(res => {
@@ -30,26 +30,28 @@ const actions = {
             // }).catch(error => {
             //     reject(error)
             // })
-            api.post('api/system/login', data).then(res => {
-                console.log('login-response', res)
-                if (res.succeeded) {
-                    commit('setUserData', res.data)
-                }
-                resolve(res)
-            }).catch(e => {
-                reject(e)
-            })
+            api.post('api/system/login', data)
+                .then(res => {
+                    console.log('login-response', res)
+                    if (res.succeeded) {
+                        commit('setUserData', res.data)
+                    }
+                    resolve(res)
+                })
+                .catch(e => {
+                    reject(e)
+                })
         })
     },
-    logout({commit}) {
+    logout({ commit }) {
         commit('removeUserData')
-        commit('menu/invalidRoutes', null, {root: true})
+        commit('menu/invalidRoutes', null, { root: true })
     },
     // 获取我的权限
-    getPermissions({state, commit}) {
+    getPermissions({ state, commit }) {
         return new Promise(resolve => {
             // 通过 mock 获取权限
-            api.get('mock/member/permission', {
+            api.get('/mock/member/permission', {
                 params: {
                     account: state.account
                 }

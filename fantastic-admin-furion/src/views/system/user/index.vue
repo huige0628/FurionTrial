@@ -95,12 +95,16 @@
                 </template>
             </el-table-column>
         </SimpleTable>
+        <AddEdit ref="edit" />
     </div>
 </template>
 <script>
 const url = `${process.env.VUE_APP_API_ROOT}api/system/getuserlist`
 export default {
     name: 'UserManager',
+    components: {
+        AddEdit: () => import('./addedit') // 添加编辑
+    },
     data() {
         return {
             tableUrl: url,
@@ -117,7 +121,9 @@ export default {
         onExpand() {
             this.$refs.table.resize()
         },
-        add() {},
+        add() {
+            this.$refs.edit.open()
+        },
         edit(row) {
             console.log(row)
         },
