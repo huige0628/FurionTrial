@@ -684,9 +684,29 @@
             用户角色Key
             </summary>
         </member>
+        <member name="T:FurionTrial.Core.Enums.UserTypeEnum">
+            <summary>
+            用户类型
+            </summary>
+        </member>
+        <member name="F:FurionTrial.Core.Enums.UserTypeEnum.Normal">
+            <summary>
+            普通用户
+            </summary>
+        </member>
+        <member name="F:FurionTrial.Core.Enums.UserTypeEnum.Admin">
+            <summary>
+            系统管理员
+            </summary>
+        </member>
         <member name="P:FurionTrial.Core.IUserManager.UserId">
             <summary>
             获取用户 Id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.IUserManager.UserName">
+            <summary>
+            获取用户
             </summary>
         </member>
         <member name="P:FurionTrial.Core.IUserManager.User">
@@ -720,6 +740,11 @@
         <member name="P:FurionTrial.Core.UserManager.UserId">
             <summary>
             获取用户 Id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Core.UserManager.UserName">
+            <summary>
+            获取用户
             </summary>
         </member>
         <member name="P:FurionTrial.Core.UserManager.User">

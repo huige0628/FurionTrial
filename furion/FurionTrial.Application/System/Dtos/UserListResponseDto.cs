@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FurionTrial.Application
 {
@@ -117,5 +118,10 @@ namespace FurionTrial.Application
         /// 部门名称
         /// </summary>
         public string OrgName { get; set; }
+
+        /// <summary>
+        /// 用户拥有的角色
+        /// </summary>
+        public List<long> RoleId { get; set; }
     }
 }

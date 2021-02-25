@@ -22,15 +22,18 @@ namespace FurionTrial.Application
         private readonly ISysRelevanceService _sysRelevanceService;
         private readonly ISysUserSerivce _sysUserSerivce;
         private readonly ISysOrgService _sysOrgService;
+        private readonly ISysRoleService _sysRoleService;
         public SystemAppService(
             ISysRelevanceService sysRelevanceService,
             ISysUserSerivce sysUserSerivce,
-            ISysOrgService sysOrgService
+            ISysOrgService sysOrgService,
+            ISysRoleService sysRoleService
             )
         {
             _sysRelevanceService = sysRelevanceService;
             _sysUserSerivce = sysUserSerivce;
             _sysOrgService = sysOrgService;
+            _sysRoleService = sysRoleService;
         }
 
         /// <summary>
@@ -55,17 +58,7 @@ namespace FurionTrial.Application
             return _sysRelevanceService.GetUserModules(userId);
         }
 
-        /// <summary>
-        /// 根据用户ID获取用户
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        [ApiDescriptionSettings(KeepName =true)]
-        public SysUser GetUserById(long userId)
-        {
-            return _sysUserSerivce.GetUserById(userId);
-        }
-
+        #region 用户管理
         /// <summary>
         /// 登录
         /// </summary>
@@ -73,19 +66,19 @@ namespace FurionTrial.Application
         /// <param name="dto"></param>
         /// <returns></returns>
         [AllowAnonymous]
-        public LoginResponseDto Login([FromServices] IHttpContextAccessor httpContextAccessor, [FromBody]LoginRequestDto dto)
+        public LoginResponseDto Login([FromServices] IHttpContextAccessor httpContextAccessor, [FromBody] LoginRequestDto dto)
         {
             var user = _sysUserSerivce.Login(dto.Account, dto.Password);
             if (user == null)
                 throw Oops.Oh("用户名或者密码错误");
 
-            var response= user.Adapt<LoginResponseDto>();
+            var response = user.Adapt<LoginResponseDto>();
             // 生成 token
-            response.AccessToken= JWTEncryption.Encrypt(new Dictionary<string, object>
+            response.AccessToken = JWTEncryption.Encrypt(new Dictionary<string, object>
             {
                 { "UserId",user.UserId },
-                { "Account",user.UserName },
-                { "UserInfo",response },
+                { "UserName",user.UserName },
+                { "Account",user.UserName }
             });
             response.ExipreTime = DateTimeOffset.Now.AddMinutes(20).DateTime;
             // 设置 Swagger 自动登录
@@ -106,6 +99,55 @@ namespace FurionTrial.Application
         }
 
         /// <summary>
+        /// 用户添加编辑
+        /// </summary>
+        /// <param name="dto"></param>
+        [ApiDescriptionSettings(KeepName = true)]
+        [HttpPost]
+        public bool UserAddEdit([FromBody] UserAddEditDto dto)
+        {
+            _sysUserSerivce.AddEdit(dto);
+            return true;
+        }
+
+        /// <summary>
+        /// 用户删除
+        /// </summary>
+        /// <param name="userId"></param>
+        [ApiDescriptionSettings(KeepName = true)]
+        [HttpPost]
+        public bool UserRemove([FromBody] long[] userId)
+        {
+            return _sysUserSerivce.Delete(userId);
+        }
+
+        /// <summary>
+        /// 用户设置角色
+        /// </summary>
+        /// <param name="dto"></param>
+        [ApiDescriptionSettings(KeepName = true)]
+        [HttpPost]
+        public bool UserSetRole([FromBody] UserSetRoleDto dto)
+        {
+            _sysRelevanceService.SetUserRole(dto);
+            return true;
+        }
+        #endregion
+
+        #region 角色管理
+        /// <summary>
+        /// 获取所有角色
+        /// </summary>
+        /// <returns></returns>
+        [ApiDescriptionSettings(KeepName = true)]
+        public List<SysRole> GetAllRoles()
+        {
+            return _sysRoleService.GetAllRoles();
+        }
+        #endregion
+
+        #region 部门管理
+        /// <summary>
         /// 获取部门树
         /// </summary>
         /// <param name="isRoot"></param>
@@ -116,6 +158,7 @@ namespace FurionTrial.Application
         public List<OrgTreeNodeDto> GetOrgTree(bool isRoot)
         {
             return _sysOrgService.GetOrgTree(isRoot);
-        }
+        } 
+        #endregion
     }
 }

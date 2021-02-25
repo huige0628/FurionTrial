@@ -209,7 +209,7 @@ export default {
                     this.loading = true
                     this.$api
                         .post(
-                            `${process.env.VUE_APP_API_ROOT}api/system/getuserlist`,
+                            'api/system/useraddedit',
                             this.formData
                         )
                         .then(res => {
@@ -248,6 +248,7 @@ export default {
                     this.formData.status = row.status
                     this.formData.remark = row.remark
                     this.formData.qq = row.qq
+                    this.formData.orgId = row.orgId.toString()
                 }
             })
         },

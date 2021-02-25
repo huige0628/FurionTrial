@@ -48,9 +48,14 @@
                 >
                     <el-table-column type="selection" width="40" fixed="left" />
                     <el-table-column
+                        prop="userCode"
+                        label="用户名"
+                        width="100"
+                    />
+                    <el-table-column
                         prop="userName"
-                        label="用户名称"
-                        width="120"
+                        label="姓名"
+                        width="100"
                     />
                     <el-table-column prop="sex" label="性别" width="80">
                         <template slot-scope="scope">
@@ -115,7 +120,8 @@
                 </SimpleTable>
             </el-col>
         </el-row>
-        <AddEdit ref="edit" />
+        <AddEdit ref="edit" @on-ok="reloadTable" />
+        <SetRole ref="setRole" @on-ok="reloadTable" />
     </div>
 </template>
 <script>
@@ -124,6 +130,7 @@ export default {
     name: 'UserManager',
     components: {
         AddEdit: () => import('./addedit'), // 添加编辑
+        SetRole: () => import('./setrole'), // 添加角色
         OrgTree: () => import('../org/orgtree') // 部门树组件
     },
     data() {
@@ -150,13 +157,40 @@ export default {
             this.$refs.edit.open()
         },
         edit(row) {
-            console.log(row)
+            this.$refs.edit.open(row)
         },
         remove(row) {
-            console.log(row)
+            let ids = []
+            if (!row) {
+                const rows = this.$refs.table.getSelection()
+                if (rows.length === 0) {
+                    this.$message.warning('请选择要删除的栏目')
+                    return
+                }
+                ids = rows.map(e => e.userId)
+            }
+
+            this.$confirm('确定要删除用户信息吗？', '删除', {
+                distinguishCancelAndClose: true,
+                confirmButtonText: '确定',
+                cancelButtonText: '取消'
+            })
+                .then(() => {
+                    this.$api.post('api/system/userremove', ids).then(res => {
+                        if (res.succeeded) {
+                            this.$message.success(res.errors)
+                            this.reloadTable()
+                        } else {
+                            this.$message.error(res.errors)
+                        }
+                    })
+                })
+                .catch(error => {
+                    this.$message.error(error)
+                })
         },
         setRole(row) {
-            console.log(row)
+            this.$refs.setRole.open(row)
         }
     }
 }

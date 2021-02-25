@@ -15,6 +15,11 @@ namespace FurionTrial.Core
         int UserId { get; }
 
         /// <summary>
+        /// 获取用户
+        /// </summary>
+        string UserName { get; }
+
+        /// <summary>
         /// 获取用户信息
         /// </summary>
         SysUser User { get; }

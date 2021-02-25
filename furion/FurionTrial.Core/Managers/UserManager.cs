@@ -49,6 +49,11 @@ namespace FurionTrial.Core
         public int UserId { get => int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId").Value); }
 
         /// <summary>
+        /// 获取用户
+        /// </summary>
+        public string UserName { get => _httpContextAccessor.HttpContext.User.FindFirst("UserName").Value; }
+
+        /// <summary>
         /// 获取用户信息
         /// </summary>
         public SysUser User { get => _userRepository.FirstOrDefault(u => u.UserId == UserId); }
