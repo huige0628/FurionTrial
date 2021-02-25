@@ -110,7 +110,6 @@ export default {
                 .then(res => {
                     this.loading = false
                     const result = res.data
-                    console.log(result)
                     if (result.succeeded) {
                         this.tableData = result.data.items
                         this.dataTotal = result.data.totalCount

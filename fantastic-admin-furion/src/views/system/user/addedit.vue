@@ -19,25 +19,19 @@
             >
                 <el-row>
                     <el-col :span="12">
-                        <el-form-item label="用户名" prop="userName">
+                        <el-form-item label="账号" prop="userCode">
                             <el-input
-                                v-model="formData.userName"
-                                placeholder="请输入用户名"
+                                v-model="formData.userCode"
+                                placeholder="请输入账号"
                                 clearable
                             />
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item
-                            v-if="!disabled"
-                            label="登录密码"
-                            prop="password"
-                        >
+                        <el-form-item label="姓名" prop="userName">
                             <el-input
-                                v-model="formData.password"
-                                type="password"
-                                placeholder="请输入密码"
-                                :disabled="disabled"
+                                v-model="formData.userName"
+                                placeholder="请输入姓名"
                                 clearable
                             />
                         </el-form-item>
@@ -75,14 +69,14 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <!-- <el-form-item label="组织部门">
-              <SelectTree
-                v-model="formData.orgId"
-                :options="orgTreeData"
-                :props="defaultProps"
-                placeholder="请选择组织部门"
-              ></SelectTree>
-            </el-form-item> -->
+                        <el-form-item label="组织部门">
+                            <TreeSelect
+                                v-model="formData.orgId"
+                                :options="orgTreeData"
+                                :props="defaultProps"
+                                placeholder="请选择组织部门"
+                            />
+                        </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
@@ -123,8 +117,6 @@
     </el-dialog>
 </template>
 <script>
-// import { getOrgTree } from '@/api/sys/org'
-// import { addEdit } from '@/api/sys/user'
 /**
  * 用户添加编辑
  */
@@ -151,7 +143,7 @@ export default {
             formData: {
                 userId: null,
                 userName: null,
-                password: null,
+                userCode: null,
                 email: null,
                 phone: null,
                 sex: 1,
@@ -162,10 +154,10 @@ export default {
             },
             formRules: {
                 userName: [
-                    { required: true, message: '请输入用户名', trigger: 'blur' }
+                    { required: true, message: '请输入姓名', trigger: 'blur' }
                 ],
-                password: [
-                    { required: true, message: '请输入密码', trigger: 'blur' }
+                userCode: [
+                    { required: true, message: '请输入登录用户', trigger: 'blur' }
                 ],
                 email: [
                     { required: true, message: '请输入邮箱', trigger: 'blur' },
@@ -179,14 +171,14 @@ export default {
                     { required: true, message: '请输入电话', trigger: 'blur' },
                     { validator: validatePhone, trigger: 'change' }
                 ]
+            },
+            orgTreeData: [],
+            defaultProps: {
+                parent: 'parentId', // 父级唯一标识
+                value: 'id', // 唯一标识
+                label: 'label', // 标签显示
+                children: 'children' // 子级
             }
-            //   orgTreeData: [],
-            //   defaultProps: {
-            //     parent: "parentId", // 父级唯一标识
-            //     value: "id", // 唯一标识
-            //     label: "label", // 标签显示
-            //     children: "children" // 子级
-            //   }
         }
     },
     computed: {
@@ -207,7 +199,7 @@ export default {
         }
     },
     mounted() {
-        // this.loadOrgTree();
+        this.loadOrgTree()
     },
     methods: {
         // 确定
@@ -249,6 +241,7 @@ export default {
                     this.disabled = true
                     this.formData.userId = row.userId
                     this.formData.userName = row.userName
+                    this.formData.userCode = row.userCode
                     this.formData.email = row.email
                     this.formData.phone = row.phone
                     this.formData.sex = row.sex
@@ -257,6 +250,13 @@ export default {
                     this.formData.qq = row.qq
                 }
             })
+        },
+        loadOrgTree() {
+            this.$api
+                .get('api/system/getorgtree', { params: { isRoot: false } })
+                .then(res => {
+                    this.orgTreeData = res.data
+                })
         }
     }
 }
