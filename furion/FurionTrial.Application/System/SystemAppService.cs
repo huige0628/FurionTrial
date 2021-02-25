@@ -21,12 +21,16 @@ namespace FurionTrial.Application
     {
         private readonly ISysRelevanceService _sysRelevanceService;
         private readonly ISysUserSerivce _sysUserSerivce;
+        private readonly ISysOrgService _sysOrgService;
         public SystemAppService(
             ISysRelevanceService sysRelevanceService,
-            ISysUserSerivce sysUserSerivce)
+            ISysUserSerivce sysUserSerivce,
+            ISysOrgService sysOrgService
+            )
         {
             _sysRelevanceService = sysRelevanceService;
             _sysUserSerivce = sysUserSerivce;
+            _sysOrgService = sysOrgService;
         }
 
         /// <summary>
@@ -101,5 +105,17 @@ namespace FurionTrial.Application
             return _sysUserSerivce.GetUserList(dto);
         }
 
+        /// <summary>
+        /// 获取部门树
+        /// </summary>
+        /// <param name="isRoot"></param>
+        /// <returns></returns>
+        [ApiDescriptionSettings(KeepName = true)]
+        [QueryParameters]
+        [HttpGet]
+        public List<OrgTreeNodeDto> GetOrgTree(bool isRoot)
+        {
+            return _sysOrgService.GetOrgTree(isRoot);
+        }
     }
 }

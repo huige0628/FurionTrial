@@ -1,5 +1,6 @@
 ﻿using Furion.DependencyInjection;
 using FurionTrial.Core.Entity;
+using FurionTrial.Core.Enums;
 using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,10 +17,12 @@ namespace FurionTrial.Application
     {
         private readonly ISqlSugarRepository<SysUser> _repository;
         private readonly ISqlSugarClient dbClint; // 核心对象：拥有完整的SqlSugar全部功能
-        public SysUserSerivce(ISqlSugarRepository<SysUser> sqlSugarRepository)
+        private readonly ISysOrgService _sysOrgService;
+        public SysUserSerivce(ISqlSugarRepository<SysUser> sqlSugarRepository, ISysOrgService sysOrgService)
         {
             _repository = sqlSugarRepository;
             dbClint = _repository.Context;
+            _sysOrgService = sysOrgService;
         }
 
         /// <summary>
@@ -62,22 +65,54 @@ namespace FurionTrial.Application
         {
             var query = dbClint.Queryable<SysUser>().Where(u => u.IsDeleted == false);
             query.WhereIF(!string.IsNullOrEmpty(dto.UserName), u => u.UserName == dto.UserName);
-            int count = query.Count();
-            var list = query.Select(u=>new UserListResponseDto() 
-            { 
-                UserId=u.UserId,
-                UserCode=u.UserCode,
-                UserName=u.UserName
-            }).ToPagedList(dto.Page, dto.Limit);
+            if (dto.OrgId > 0)
+            {
+                //获取部门下面的所有子部门
+                var reKey = SysRelevanceEnum.SysUser_SysOrg.ToString();
+                var orgId = _sysOrgService.GetAllChild(new List<long> { dto.OrgId.Value }).Select(o => o.OrgId).ToArray();
+                var rUserId = dbClint.Queryable<SysRelevance>().Where(o => o.Key == reKey && orgId.Contains(o.SecondId) && o.IsDeleted == false).Select(o => o.FirstId).Distinct().ToArray();
+                query.Where(o => rUserId.Contains(o.UserId));
+            }
+            int count = 0;
+            var list = query.Select(u=> new UserListResponseDto() 
+            {
+                UserId = u.UserId,
+                UserName = u.UserName,
+                Avatar = u.Avatar,
+                Phone = u.Phone,
+                Email = u.Email,
+                Qq = u.Qq,
+                Sex = u.Sex,
+                Status = u.Status,
+                LastLoginIp = u.LastLoginIp,
+                LastLoginDate = u.LastLoginDate,
+                CreateDate = u.CreateDate,
+                Remark = u.Remark,
+                //RoleId = roleList.Where(e => e.UserId == u.UserId).Any() ? roleList.Where(m => m.UserId == u.UserId).Select(m => m.RoleId).ToList() : new List<long>(),
+            }).ToPageList(dto.Page, dto.Limit, ref count);
             //var result = list.Adapt<List<UserListResponseDto>>();
-            return list;
-            //return new PagedList()
-            //{
-            //    PageIndex = dto.Page,
-            //    PageSize = dto.Limit,
-            //    Items = result,
-            //    TotalCount = count
-            //};
+
+            if (list.Count > 0)
+            {
+                var userIds = list.Select(u => u.UserId).ToList();
+                var userOrgs = _sysOrgService.GetUserOrg(userIds);
+                list.ForEach(l =>
+                {
+                    var userOrg = userOrgs.Where(o => o.UserId == l.UserId).FirstOrDefault();
+                    if (userOrg != null)
+                    {
+                        l.OrgId = userOrg.OrgId;
+                        l.OrgName = userOrg.OrgName;
+                    }
+                });
+            }
+            return new SqlSugarPagedList<UserListResponseDto>()
+            {
+                PageIndex = dto.Page,
+                PageSize = dto.Limit,
+                Items = list,
+                TotalCount = count
+            };
         }
 
     }

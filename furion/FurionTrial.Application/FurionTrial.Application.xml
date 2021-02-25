@@ -24,9 +24,19 @@
             Token过期时间
             </summary>
         </member>
+        <member name="T:FurionTrial.Application.OrgTreeNodeDto">
+            <summary>
+            组织结构树
+            </summary>
+        </member>
         <member name="P:FurionTrial.Application.UserListRequestDto.UserName">
             <summary>
             用户名
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListRequestDto.OrgId">
+            <summary>
+            部门ID
             </summary>
         </member>
         <member name="P:FurionTrial.Application.UserListResponseDto.UserId">
@@ -134,6 +144,16 @@
             修改人名称
             </summary>
         </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.OrgId">
+            <summary>
+            部门ID
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.UserListResponseDto.OrgName">
+            <summary>
+            部门名称
+            </summary>
+        </member>
         <member name="T:FurionTrial.Application.UserModuleDto">
             <summary>
             用户拥有模块数据
@@ -189,6 +209,37 @@
             
             </summary>
         </member>
+        <member name="T:FurionTrial.Application.UserOrgDto">
+            <summary>
+            用户部门
+            </summary>
+        </member>
+        <member name="T:FurionTrial.Application.ISysOrgService">
+            <summary>
+            组织结构接口
+            </summary>
+        </member>
+        <member name="M:FurionTrial.Application.ISysOrgService.GetOrgTree(System.Boolean)">
+            <summary>
+            获取部门树
+            </summary>
+            <param name="isRoot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysOrgService.GetAllChild(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            获取所有子集
+            </summary>
+            <param name="orgId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysOrgService.GetUserOrg(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            获取用户部门
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
         <member name="M:FurionTrial.Application.ISysRelevanceService.GetUserRoles(System.Int64)">
             <summary>
             获取用户角色
@@ -230,6 +281,40 @@
             获取用户列表
             </summary>
             <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FurionTrial.Application.SysOrgService">
+            <summary>
+            组织结构类
+            </summary>
+        </member>
+        <member name="M:FurionTrial.Application.SysOrgService.GetOrgTree(System.Boolean)">
+            <summary>
+            获取部门树
+            </summary>
+            <param name="isRoot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysOrgService.GetOrgNode(System.Nullable{System.Int64},System.Collections.Generic.List{FurionTrial.Core.Entity.SysOrg})">
+            <summary>
+            获取子节点
+            </summary>
+            <param name="parentId"></param>
+            <param name="orgList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysOrgService.GetUserOrg(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            获取用户部门
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysOrgService.GetAllChild(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            获取所有子集
+            </summary>
+            <param name="orgId"></param>
             <returns></returns>
         </member>
         <member name="M:FurionTrial.Application.SysRelevanceService.GetUserRoles(System.Int64)">
@@ -314,6 +399,13 @@
             获取用户列表
             </summary>
             <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.GetOrgTree(System.Boolean)">
+            <summary>
+            获取部门树
+            </summary>
+            <param name="isRoot"></param>
             <returns></returns>
         </member>
     </members>

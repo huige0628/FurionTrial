@@ -108,5 +108,14 @@ namespace FurionTrial.Application
         /// 修改人名称
         /// </summary>
         public String ModifyUserName { get; set; }
+
+        /// <summary>
+        /// 部门ID
+        /// </summary>
+        public long OrgId { get; set; }
+        /// <summary>
+        /// 部门名称
+        /// </summary>
+        public string OrgName { get; set; }
     }
 }

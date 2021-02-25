@@ -13,5 +13,10 @@ namespace FurionTrial.Application
         /// 用户名
         /// </summary>
         public string UserName { get; set; }
+
+        /// <summary>
+        /// 部门ID
+        /// </summary>
+        public long? OrgId { get; set; }
     }
 }
