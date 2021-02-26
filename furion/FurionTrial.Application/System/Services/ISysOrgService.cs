@@ -1,4 +1,5 @@
 ﻿using FurionTrial.Core.Entity;
+using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,5 +33,25 @@ namespace FurionTrial.Application
         /// <param name="userId"></param>
         /// <returns></returns>
         List<UserOrgDto> GetUserOrg(List<long> userId);
+
+        /// <summary>
+        /// 获取列表
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        SqlSugarPagedList<SysOrg> GetOrgList(OrgListRequestDto dto);
+
+        /// <summary>
+        /// 添加编辑部门
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        void AddEdit(OrgAddEditDto dto);
+
+        /// <summary>
+        /// 删除角色
+        /// </summary>
+        /// <param name="ids"></param>
+        bool Delete(long[] ids);
     }
 }

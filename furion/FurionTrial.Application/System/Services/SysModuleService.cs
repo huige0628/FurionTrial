@@ -97,5 +97,64 @@ namespace FurionTrial.Application.System.Services
             return nodeList;
         }
 
+        /// <summary>
+        /// 获取模块树
+        /// </summary>
+        /// <returns></returns>
+        public List<ModuleTreeNodeDto> GetModuleTree()
+        {
+            var moduleTree = new List<ModuleTreeNodeDto>();
+            var modules = dbClint.Queryable<SysModule>().Where(o => o.IsDeleted == false).ToList();
+            modules.Where(o => o.ParentModuleId == 0).ToList().ForEach(o =>
+            {
+                moduleTree.Add(new ModuleTreeNodeDto()
+                {
+                    Id = o.ModuleId,
+                    Title = o.ModuleName,
+                    Icon = o.Icon,
+                    Path = o.Url,
+                    Code=o.Code,
+                    Level=o.Level,
+                    Children = GetModuleNode(o.ModuleId, o.ModuleId, modules)
+                });
+            });
+            return moduleTree;
+        }
+        private List<ModuleTreeNodeDto> GetModuleNode(long? parentId, long rootId, List<SysModule> moduleList)
+        {
+            if (moduleList == null || moduleList.Count == 0) return null;
+            var nodeList = moduleList.FindAll(c => c.ParentModuleId == parentId).Select(o => new ModuleTreeNodeDto()
+            {
+                Id = o.ModuleId,
+                Title = o.ModuleName,
+                Icon = o.Icon,
+                Path = o.Url,
+                RootId = rootId,
+                Code=o.Code,
+                Level = o.Level,
+                Children = GetModuleNode(o.ModuleId, rootId, moduleList)
+            }).ToList();
+            return nodeList;
+        }
+
+        /// <summary>
+        /// 获取模块按钮列表
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public SqlSugarPagedList<SysModuleElement> GetModuleElementList(ModuleElementListRequestDto dto)
+        {
+            var query = dbClint.Queryable<SysModuleElement>().Where(e => e.IsDeleted == false);
+            query.WhereIF(dto.ModuleId.HasValue,e=>e.ModuleId==dto.ModuleId);
+            int total = 0;
+            var list = query.ToPageList(dto.Page, dto.Limit, ref total);
+            return new SqlSugarPagedList<SysModuleElement>()
+            {
+                PageIndex = dto.Page,
+                PageSize = dto.Limit,
+                Items = list,
+                TotalCount = total
+            };
+        }
     }
 }

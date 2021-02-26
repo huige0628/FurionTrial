@@ -26,6 +26,24 @@ export default {
         meta: {
             title: '角色管理'
         }
+    },
+    {
+        path: 'org',
+        name: 'org',
+        component: () =>
+            import (/* webpackChunkName: 'system' */ '@/views/system/org/index'),
+        meta: {
+            title: '部门管理'
+        }
+    },
+    {
+        path: 'module',
+        name: 'module',
+        component: () =>
+            import (/* webpackChunkName: 'system' */ '@/views/system/module/index'),
+        meta: {
+            title: '菜单管理'
+        }
     }
     ]
 }

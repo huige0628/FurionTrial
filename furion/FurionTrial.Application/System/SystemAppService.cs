@@ -161,7 +161,7 @@ namespace FurionTrial.Application
         }
 
         /// <summary>
-        /// 用户添加编辑
+        /// 角色添加编辑
         /// </summary>
         /// <param name="dto"></param>
         [ApiDescriptionSettings(KeepName = true)]
@@ -173,7 +173,7 @@ namespace FurionTrial.Application
         }
 
         /// <summary>
-        /// 用户删除
+        /// 角色删除
         /// </summary>
         /// <param name="roleIds"></param>
         [ApiDescriptionSettings(KeepName = true)]
@@ -221,7 +221,66 @@ namespace FurionTrial.Application
         public List<OrgTreeNodeDto> GetOrgTree(bool isRoot)
         {
             return _sysOrgService.GetOrgTree(isRoot);
-        } 
+        }
+
+        /// <summary>
+        /// 获取部门列表
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [ApiDescriptionSettings(KeepName = true)]
+        [HttpPost]
+        public SqlSugarPagedList<SysOrg> GetOrgList([FromBody] OrgListRequestDto dto)
+        {
+            return _sysOrgService.GetOrgList(dto);
+        }
+
+        /// <summary>
+        /// 部门添加编辑
+        /// </summary>
+        /// <param name="dto"></param>
+        [ApiDescriptionSettings(KeepName = true)]
+        [HttpPost]
+        public bool OrgAddEdit([FromBody] OrgAddEditDto dto)
+        {
+            _sysOrgService.AddEdit(dto);
+            return true;
+        }
+
+        /// <summary>
+        /// 部门删除
+        /// </summary>
+        /// <param name="roleIds"></param>
+        [ApiDescriptionSettings(KeepName = true)]
+        [HttpPost]
+        public bool OrgRemove([FromBody] long[] roleIds)
+        {
+            return _sysOrgService.Delete(roleIds);
+        }
+        #endregion
+
+        #region 模块管理
+        /// <summary>
+        /// 获取模块树
+        /// </summary>
+        /// <returns></returns>
+        [ApiDescriptionSettings(KeepName = true)]
+        public List<ModuleTreeNodeDto> GetModuleTree()
+        {
+            return _sysModuleService.GetModuleTree();
+        }
+
+        /// <summary>
+        /// 获取模块按钮列表
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [ApiDescriptionSettings(KeepName = true)]
+        [HttpPost]
+        public SqlSugarPagedList<SysModuleElement> GetModuleElementList(ModuleElementListRequestDto dto)
+        {
+            return _sysModuleService.GetModuleElementList(dto);
+        }
         #endregion
     }
 }

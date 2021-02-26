@@ -24,6 +24,41 @@
             Token过期时间
             </summary>
         </member>
+        <member name="T:FurionTrial.Application.ModuleTreeNodeDto">
+            <summary>
+            模块树
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.OrgAddEditDto.OrgId">
+            <summary>
+            部门id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.OrgAddEditDto.OrgName">
+            <summary>
+            部门名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.OrgAddEditDto.ParentOrgId">
+            <summary>
+            上级id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.OrgAddEditDto.ParentOrgName">
+            <summary>
+            上级名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.OrgAddEditDto.SortNo">
+            <summary>
+            排序号
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.OrgAddEditDto.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
         <member name="T:FurionTrial.Application.OrgTreeNodeDto">
             <summary>
             组织结构树
@@ -260,6 +295,19 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:FurionTrial.Application.ISysModuleService.GetModuleTree">
+            <summary>
+            获取模块树
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysModuleService.GetModuleElementList(FurionTrial.Application.ModuleElementListRequestDto)">
+            <summary>
+            获取模块按钮列表
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
         <member name="T:FurionTrial.Application.ISysOrgService">
             <summary>
             组织结构接口
@@ -285,6 +333,26 @@
             </summary>
             <param name="userId"></param>
             <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysOrgService.GetOrgList(FurionTrial.Application.OrgListRequestDto)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysOrgService.AddEdit(FurionTrial.Application.OrgAddEditDto)">
+            <summary>
+            添加编辑部门
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysOrgService.Delete(System.Int64[])">
+            <summary>
+            删除角色
+            </summary>
+            <param name="ids"></param>
         </member>
         <member name="M:FurionTrial.Application.ISysRelevanceService.GetUserRoles(System.Int64)">
             <summary>
@@ -385,6 +453,19 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:FurionTrial.Application.System.Services.SysModuleService.GetModuleTree">
+            <summary>
+            获取模块树
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.System.Services.SysModuleService.GetModuleElementList(FurionTrial.Application.ModuleElementListRequestDto)">
+            <summary>
+            获取模块按钮列表
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
         <member name="T:FurionTrial.Application.SysOrgService">
             <summary>
             组织结构类
@@ -418,6 +499,26 @@
             </summary>
             <param name="orgId"></param>
             <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysOrgService.GetOrgList(FurionTrial.Application.OrgListRequestDto)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysOrgService.AddEdit(FurionTrial.Application.OrgAddEditDto)">
+            <summary>
+            添加编辑角色
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysOrgService.Delete(System.Int64[])">
+            <summary>
+            删除角色
+            </summary>
+            <param name="ids"></param>
         </member>
         <member name="F:FurionTrial.Application.SysRelevanceService._userManager">
             <summary>
@@ -579,13 +680,13 @@
         </member>
         <member name="M:FurionTrial.Application.SystemAppService.RoleAddEdit(FurionTrial.Application.RoleAddEditDto)">
             <summary>
-            用户添加编辑
+            角色添加编辑
             </summary>
             <param name="dto"></param>
         </member>
         <member name="M:FurionTrial.Application.SystemAppService.RoleRemove(System.Int64[])">
             <summary>
-            用户删除
+            角色删除
             </summary>
             <param name="roleIds"></param>
         </member>
@@ -608,6 +709,38 @@
             获取部门树
             </summary>
             <param name="isRoot"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.GetOrgList(FurionTrial.Application.OrgListRequestDto)">
+            <summary>
+            获取部门列表
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.OrgAddEdit(FurionTrial.Application.OrgAddEditDto)">
+            <summary>
+            部门添加编辑
+            </summary>
+            <param name="dto"></param>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.OrgRemove(System.Int64[])">
+            <summary>
+            部门删除
+            </summary>
+            <param name="roleIds"></param>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.GetModuleTree">
+            <summary>
+            获取模块树
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.GetModuleElementList(FurionTrial.Application.ModuleElementListRequestDto)">
+            <summary>
+            获取模块按钮列表
+            </summary>
+            <param name="dto"></param>
             <returns></returns>
         </member>
     </members>

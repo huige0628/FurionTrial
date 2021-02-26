@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="page-main">
         <!-- head -->
         <SimpleHead
             :model="filter"
@@ -13,8 +13,6 @@
                         <el-button type="success" icon="el-icon-plus" @click="add">
                             添加
                         </el-button>
-                        <!-- <el-button type="primary" icon="el-icon-edit" @click="edit">编辑</el-button>
-            <el-button type="danger" icon="el-icon-delete" @click="remove">删除</el-button>-->
                     </el-button-group>
                 </el-form-item>
             </template>

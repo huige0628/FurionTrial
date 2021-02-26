@@ -99,14 +99,13 @@ namespace FurionTrial.Application
         /// <param name="ids"></param>
         public bool Delete(long[] ids)
         {
-            var count = dbClint.Updateable<SysUser>().SetColumns(u => new SysUser
+            var count = dbClint.Updateable<SysRole>().SetColumns(u => new SysRole
             {
                 DeleteUserId = _userManager.UserId,
                 DeleteUserName = _userManager.UserName,
                 DeleteDate = DateTime.Now,
-                IsDeleted = true,
-                Status = 0
-            }).Where(u => ids.Contains(u.UserId)).ExecuteCommand();
+                IsDeleted = true
+            }).Where(u => ids.Contains(u.RoleId)).ExecuteCommand();
             return count > 0;
         }
 
