@@ -35,5 +35,12 @@ namespace FurionTrial.Application
         /// <param name="userId"></param>
         /// <param name="orgId"></param>
         void SetUserOrg(long userId, long orgId);
+
+        /// <summary>
+        /// 获取角色模块权限
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        List<long> GetRoleModule(long roleId);
     }
 }

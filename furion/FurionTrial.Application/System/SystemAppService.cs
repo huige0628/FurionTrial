@@ -23,17 +23,20 @@ namespace FurionTrial.Application
         private readonly ISysUserSerivce _sysUserSerivce;
         private readonly ISysOrgService _sysOrgService;
         private readonly ISysRoleService _sysRoleService;
+        private readonly ISysModuleService _sysModuleService;
         public SystemAppService(
             ISysRelevanceService sysRelevanceService,
             ISysUserSerivce sysUserSerivce,
             ISysOrgService sysOrgService,
-            ISysRoleService sysRoleService
+            ISysRoleService sysRoleService,
+            ISysModuleService sysModuleService
             )
         {
             _sysRelevanceService = sysRelevanceService;
             _sysUserSerivce = sysUserSerivce;
             _sysOrgService = sysOrgService;
             _sysRoleService = sysRoleService;
+            _sysModuleService = sysModuleService;
         }
 
         /// <summary>
@@ -144,6 +147,66 @@ namespace FurionTrial.Application
         {
             return _sysRoleService.GetAllRoles();
         }
+
+        /// <summary>
+        /// 获取角色列表
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [ApiDescriptionSettings(KeepName = true)]
+        [HttpPost]
+        public SqlSugarPagedList<SysRole> GetRoleList([FromBody] RoleListRequestDto dto)
+        {
+            return _sysRoleService.GetRoleList(dto);
+        }
+
+        /// <summary>
+        /// 用户添加编辑
+        /// </summary>
+        /// <param name="dto"></param>
+        [ApiDescriptionSettings(KeepName = true)]
+        [HttpPost]
+        public bool RoleAddEdit([FromBody] RoleAddEditDto dto)
+        {
+            _sysRoleService.AddEdit(dto);
+            return true;
+        }
+
+        /// <summary>
+        /// 用户删除
+        /// </summary>
+        /// <param name="roleIds"></param>
+        [ApiDescriptionSettings(KeepName = true)]
+        [HttpPost]
+        public bool RoleRemove([FromBody] long[] roleIds)
+        {
+            return _sysRoleService.Delete(roleIds);
+        }
+
+        /// <summary>
+        /// 获取角色模块权限
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        [ApiDescriptionSettings(KeepName = true)]
+        [QueryParameters]
+        public List<long> GetRoleModule(long roleId)
+        {
+            return _sysRelevanceService.GetRoleModule(roleId);
+        }
+
+        /// <summary>
+        /// 获取模块权限树
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        [ApiDescriptionSettings(KeepName = true)]
+        [QueryParameters]
+        public List<RoleModuleTreeNodeDto> GetRoleModuleTree(long roleId)
+        {
+            return _sysModuleService.GetRoleModuleTree(roleId);
+        }
+
         #endregion
 
         #region 部门管理

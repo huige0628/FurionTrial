@@ -213,12 +213,12 @@ export default {
                             this.formData
                         )
                         .then(res => {
-                            if (res.success) {
-                                this.$message.success(res.data)
+                            if (res.succeeded) {
+                                this.$message.success('保存成功')
                                 this.$emit('on-ok') // 成功响应事件
                                 this.close()
                             } else {
-                                this.$message.error(res.msg)
+                                this.$message.error(res.errors)
                             }
                         })
                         .catch(() => (this.loading = false))

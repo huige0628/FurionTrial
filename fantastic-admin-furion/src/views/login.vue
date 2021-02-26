@@ -85,6 +85,7 @@ export default {
                     }).catch(e => {
                         console.log('login-fail', e)
                         this.loading = false
+                        this.$message.error(e)
                     })
                 }
             })

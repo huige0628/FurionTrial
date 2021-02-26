@@ -90,7 +90,7 @@
         </div>
         <Search />
         <ThemeSetting />
-        <BuyIt />
+        <!-- <BuyIt /> -->
     </div>
 </template>
 
@@ -102,7 +102,7 @@ import SidebarItem from './components/SidebarItem'
 import Topbar from './components/Topbar'
 import Search from './components/Search'
 import ThemeSetting from './components/ThemeSetting'
-import BuyIt from './components/BuyIt'
+// import BuyIt from './components/BuyIt'
 
 export default {
     name: 'Layout',
@@ -112,8 +112,7 @@ export default {
         SidebarItem,
         Topbar,
         ThemeSetting,
-        UserMenu,
-        BuyIt
+        UserMenu
     },
     provide() {
         return {

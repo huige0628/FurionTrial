@@ -17,7 +17,7 @@ let globalSettings = {
     showCopyright: false,
     // 版权信息配置，格式为：Copyright © [dates] <company>
     copyrightDates: '2021',
-    copyrightCompany: 'Fantastic-admin',
+    copyrightCompany: 'xxx-admin',
     copyrightWebsite: 'https://hooray.gitee.io/fantastic-admin',
     // 是否开启导航搜索
     enableNavSearch: true,

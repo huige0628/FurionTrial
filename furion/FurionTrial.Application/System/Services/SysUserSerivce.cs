@@ -53,7 +53,7 @@ namespace FurionTrial.Application
         public SqlSugarPagedList<UserListResponseDto> GetUserList(UserListRequestDto dto)
         {
             var query = dbClint.Queryable<SysUser>().Where(u => u.IsDeleted == false);
-            query.WhereIF(!string.IsNullOrEmpty(dto.UserName), u => u.UserName == dto.UserName);
+            query.WhereIF(!string.IsNullOrEmpty(dto.UserName), u =>u.UserName.Contains(dto.UserName.Trim()));
             if (dto.OrgId > 0)
             {
                 //获取部门下面的所有子部门
@@ -124,9 +124,9 @@ namespace FurionTrial.Application
             if (dto.UserId.HasValue)
             {
                 if (dbClint.Queryable<SysUser>().Where(u => u.UserCode == dto.UserCode && u.IsDeleted == false && u.UserId != dto.UserId.Value).Any())
-                    throw new Exception(string.Format("用户名[{0}]已经存在!", dto.UserName));
+                    throw Oops.Oh(string.Format("用户名[{0}]已经存在!", dto.UserName));
                 if (dbClint.Queryable<SysUser>().Where(u => u.Email == dto.Email && u.IsDeleted == false && u.UserId != dto.UserId.Value).Any())
-                    throw new Exception(string.Format("邮箱[{0}]已经被使用!", dto.Email));
+                    throw Oops.Oh(string.Format("邮箱[{0}]已经被使用!", dto.Email));
                 sysUser = _repository.FirstOrDefault(u=>u.UserId== dto.UserId.Value);
                 sysUser.ModifyDate = DateTime.Now;
                 sysUser.ModifyUserId = _userManager.UserId;
@@ -136,9 +136,9 @@ namespace FurionTrial.Application
             else
             {
                 if (dbClint.Queryable<SysUser>().Where(u => u.UserName == dto.UserName && u.IsDeleted == false).Any())
-                    throw new Exception(string.Format("用户名[{0}]已经存在!", dto.UserName));
+                    throw Oops.Oh(string.Format("用户名[{0}]已经存在!", dto.UserName));
                 if (dbClint.Queryable<SysUser>().Where(u => u.Email == dto.Email && u.IsDeleted == false).Any())
-                    throw new Exception(string.Format("邮箱[{0}]已经被使用!", dto.Email));
+                    throw Oops.Oh(string.Format("邮箱[{0}]已经被使用!", dto.Email));
                 sysUser = new SysUser()
                 {
                     CreateDate = DateTime.Now,

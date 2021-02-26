@@ -29,6 +29,31 @@
             组织结构树
             </summary>
         </member>
+        <member name="P:FurionTrial.Application.RoleAddEditDto.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.RoleAddEditDto.RoleName">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.RoleAddEditDto.IsEnabled">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.RoleAddEditDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:FurionTrial.Application.ModuleElementDto">
+            <summary>
+            模块对应权限
+            </summary>
+        </member>
         <member name="T:FurionTrial.Application.UserAddEditDto">
             <summary>
             添加编辑用户
@@ -229,6 +254,12 @@
             用户设置角色
             </summary>
         </member>
+        <member name="M:FurionTrial.Application.ISysModuleService.GetRoleModuleTree(System.Int64)">
+            <summary>
+            获取模块权限树
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:FurionTrial.Application.ISysOrgService">
             <summary>
             组织结构接口
@@ -282,11 +313,38 @@
             <param name="userId"></param>
             <param name="orgId"></param>
         </member>
+        <member name="M:FurionTrial.Application.ISysRelevanceService.GetRoleModule(System.Int64)">
+            <summary>
+            获取角色模块权限
+            </summary>
+            <param name="roleId"></param>
+            <returns></returns>
+        </member>
         <member name="M:FurionTrial.Application.ISysRoleService.GetAllRoles">
             <summary>
             获取所有角色
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysRoleService.GetRoleList(FurionTrial.Application.RoleListRequestDto)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysRoleService.AddEdit(FurionTrial.Application.RoleAddEditDto)">
+            <summary>
+            添加编辑角色
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysRoleService.Delete(System.Int64[])">
+            <summary>
+            删除角色
+            </summary>
+            <param name="ids"></param>
         </member>
         <member name="M:FurionTrial.Application.ISysUserSerivce.Login(System.String,System.String)">
             <summary>
@@ -314,6 +372,17 @@
             删除用户
             </summary>
             <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="F:FurionTrial.Application.System.Services.SysModuleService._userManager">
+            <summary>
+            用户管理类
+            </summary>
+        </member>
+        <member name="M:FurionTrial.Application.System.Services.SysModuleService.GetRoleModuleTree(System.Int64)">
+            <summary>
+            获取模块权限树
+            </summary>
             <returns></returns>
         </member>
         <member name="T:FurionTrial.Application.SysOrgService">
@@ -382,11 +451,38 @@
             <param name="userId"></param>
             <param name="orgId"></param>
         </member>
+        <member name="M:FurionTrial.Application.SysRelevanceService.GetRoleModule(System.Int64)">
+            <summary>
+            获取角色模块权限
+            </summary>
+            <param name="roleId"></param>
+            <returns></returns>
+        </member>
         <member name="M:FurionTrial.Application.SysRoleService.GetAllRoles">
             <summary>
             获取所有角色
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysRoleService.GetRoleList(FurionTrial.Application.RoleListRequestDto)">
+            <summary>
+            获取列表
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysRoleService.AddEdit(FurionTrial.Application.RoleAddEditDto)">
+            <summary>
+            添加编辑角色
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SysRoleService.Delete(System.Int64[])">
+            <summary>
+            删除角色
+            </summary>
+            <param name="ids"></param>
         </member>
         <member name="M:FurionTrial.Application.SysUserSerivce.Login(System.String,System.String)">
             <summary>
@@ -472,6 +568,39 @@
             <summary>
             获取所有角色
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.GetRoleList(FurionTrial.Application.RoleListRequestDto)">
+            <summary>
+            获取角色列表
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.RoleAddEdit(FurionTrial.Application.RoleAddEditDto)">
+            <summary>
+            用户添加编辑
+            </summary>
+            <param name="dto"></param>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.RoleRemove(System.Int64[])">
+            <summary>
+            用户删除
+            </summary>
+            <param name="roleIds"></param>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.GetRoleModule(System.Int64)">
+            <summary>
+            获取角色模块权限
+            </summary>
+            <param name="roleId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.GetRoleModuleTree(System.Int64)">
+            <summary>
+            获取模块权限树
+            </summary>
+            <param name="roleId"></param>
             <returns></returns>
         </member>
         <member name="M:FurionTrial.Application.SystemAppService.GetOrgTree(System.Boolean)">

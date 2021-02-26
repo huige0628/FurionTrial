@@ -148,5 +148,16 @@ namespace FurionTrial.Application
             };
             dbClint.Insertable(relevance).ExecuteCommand();
         }
+
+        /// <summary>
+        /// 获取角色模块权限
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        public List<long> GetRoleModule(long roleId)
+        {
+            return dbClint.Queryable<SysRelevance>().Where(r => r.Key == SysRelevanceEnum.SysRole_SysModule.ToString() && r.IsDeleted == false && r.FirstId == roleId).Select(r => r.SecondId).ToList();
+        }
+
     }
 }
