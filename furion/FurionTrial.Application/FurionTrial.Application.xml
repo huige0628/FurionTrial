@@ -24,6 +24,61 @@
             Token过期时间
             </summary>
         </member>
+        <member name="P:FurionTrial.Application.ModuleAddEditDto.ModuleId">
+            <summary>
+            模块id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.ModuleAddEditDto.ModuleName">
+            <summary>
+            模块名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.ModuleAddEditDto.ParentModuleId">
+            <summary>
+            父模块id
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.ModuleAddEditDto.ParentModuleName">
+            <summary>
+            父模块名称
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.ModuleAddEditDto.Url">
+            <summary>
+            模块地址
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.ModuleAddEditDto.IsLeaf">
+            <summary>
+            是否叶子节点[0否 1是]
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.ModuleAddEditDto.SortNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.ModuleAddEditDto.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.ModuleAddEditDto.Code">
+            <summary>
+            模块编码
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.ModuleAddEditDto.Level">
+            <summary>
+            级别
+            </summary>
+        </member>
+        <member name="P:FurionTrial.Application.ModuleAddEditDto.IsEnabled">
+            <summary>
+            是否启用
+            </summary>
+        </member>
         <member name="T:FurionTrial.Application.ModuleTreeNodeDto">
             <summary>
             模块树
@@ -301,12 +356,31 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:FurionTrial.Application.ISysModuleService.GetModuleById(System.Int64)">
+            <summary>
+            根据模块id获取模块信息
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:FurionTrial.Application.ISysModuleService.GetModuleElementList(FurionTrial.Application.ModuleElementListRequestDto)">
             <summary>
             获取模块按钮列表
             </summary>
             <param name="dto"></param>
             <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysModuleService.AddEdit(FurionTrial.Application.ModuleAddEditDto)">
+            <summary>
+            添加编辑模块
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.ISysModuleService.Delete(System.Int64[])">
+            <summary>
+            删除模块
+            </summary>
+            <param name="ids"></param>
         </member>
         <member name="T:FurionTrial.Application.ISysOrgService">
             <summary>
@@ -465,6 +539,33 @@
             </summary>
             <param name="dto"></param>
             <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.System.Services.SysModuleService.GetModuleById(System.Int64)">
+            <summary>
+            根据模块id获取模块信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.System.Services.SysModuleService.AddEdit(FurionTrial.Application.ModuleAddEditDto)">
+            <summary>
+            添加编辑模块
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.System.Services.SysModuleService.Delete(System.Int64[])">
+            <summary>
+            删除模块
+            </summary>
+            <param name="ids"></param>
+        </member>
+        <member name="M:FurionTrial.Application.System.Services.SysModuleService.GetAllModuleId(System.Collections.Generic.List{FurionTrial.Core.Entity.SysModule},System.Int64[],System.Collections.Generic.List{System.Int64}@)">
+            <summary>
+            递归获取所有子模块id
+            </summary>
+            <param name="modules"></param>
+            <param name="moduleIds"></param>
+            <param name="idList"></param>
         </member>
         <member name="T:FurionTrial.Application.SysOrgService">
             <summary>
@@ -742,6 +843,24 @@
             </summary>
             <param name="dto"></param>
             <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.GetModuleById(System.Int64)">
+            <summary>
+            根据模块id获取模块信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.ModuleAddEdit(FurionTrial.Application.ModuleAddEditDto)">
+            <summary>
+            模块添加编辑
+            </summary>
+            <param name="dto"></param>
+        </member>
+        <member name="M:FurionTrial.Application.SystemAppService.ModuleRemove(System.Int64[])">
+            <summary>
+            模块删除
+            </summary>
+            <param name="roleIds"></param>
         </member>
     </members>
 </doc>

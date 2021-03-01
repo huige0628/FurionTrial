@@ -26,7 +26,6 @@ api.interceptors.request.use(
             if (request.data instanceof FormData) {
                 if (store.getters['user/isLogin']) {
                     // 如果是 FormData 类型（上传图片）
-                    // request.data.append('token', store.state.user.token)
                     request.headers.Authorization = 'Bearer ' + store.state.user.token
                 }
             } else {
@@ -35,7 +34,6 @@ api.interceptors.request.use(
                     request.data = {}
                 }
                 if (store.getters['user/isLogin']) {
-                    // request.data.token = store.state.user.token
                     request.headers.Authorization = 'Bearer ' + store.state.user.token
                 }
                 // request.data = Qs.stringify(request.data)
@@ -46,7 +44,6 @@ api.interceptors.request.use(
                 request.params = {}
             }
             if (store.getters['user/isLogin']) {
-                // request.params.token = store.state.user.token
                 request.headers.Authorization = 'Bearer ' + store.state.user.token
             }
         }
@@ -69,6 +66,7 @@ api.interceptors.response.use(
         return Promise.resolve(response.data)
     },
     error => {
+        console.log('request-error', error)
         return Promise.reject(error)
     }
 )

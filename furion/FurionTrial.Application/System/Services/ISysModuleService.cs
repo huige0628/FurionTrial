@@ -23,10 +23,29 @@ namespace FurionTrial.Application
         List<ModuleTreeNodeDto> GetModuleTree();
 
         /// <summary>
+        /// 根据模块id获取模块信息
+        /// </summary>
+        /// <returns></returns>
+        SysModule GetModuleById(long moduleId);
+
+        /// <summary>
         /// 获取模块按钮列表
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
         SqlSugarPagedList<SysModuleElement> GetModuleElementList(ModuleElementListRequestDto dto);
+
+        /// <summary>
+        /// 添加编辑模块
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        void AddEdit(ModuleAddEditDto dto);
+
+        /// <summary>
+        /// 删除模块
+        /// </summary>
+        /// <param name="ids"></param>
+        bool Delete(long[] ids);
     }
 }

@@ -32,7 +32,6 @@ const actions = {
             // })
             api.post('api/system/login', data)
                 .then(res => {
-                    console.log('login-response', res)
                     if (res.succeeded) {
                         commit('setUserData', res.data)
                     }

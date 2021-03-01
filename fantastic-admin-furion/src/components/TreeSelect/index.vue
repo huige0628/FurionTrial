@@ -118,6 +118,7 @@ export default {
         onClickNode(node) {
             this.labelModel = node[this.props.label]
             this.valueModel = node[this.props.value]
+            this.$emit('node-click', node)
             this.onCloseTree()
         },
         // 偏平数组转化为树状层级结构

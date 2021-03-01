@@ -1,4 +1,5 @@
 ﻿using Furion.DependencyInjection;
+using Furion.FriendlyException;
 using FurionTrial.Core;
 using FurionTrial.Core.Entity;
 using FurionTrial.Core.Enums;
@@ -156,5 +157,127 @@ namespace FurionTrial.Application.System.Services
                 TotalCount = total
             };
         }
+
+        /// <summary>
+        /// 根据模块id获取模块信息
+        /// </summary>
+        /// <returns></returns>
+        public SysModule GetModuleById(long moduleId)
+        {
+            return _repository.FirstOrDefault(m => m.ModuleId == moduleId);
+        }
+
+        /// <summary>
+        /// 添加编辑模块
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public void AddEdit(ModuleAddEditDto dto)
+        {
+            dto.ModuleName = dto.ModuleName.Trim();
+            SysModule model = null;
+            if (dto.ModuleId.HasValue)
+            {
+                if (!dto.ParentModuleId.HasValue || dto.ParentModuleId.Value == 0)
+                {
+                    if (dbClint.Queryable<SysModule>().Where(m => m.ModuleName == dto.ModuleName && m.ModuleId != dto.ModuleId && (m.ParentModuleId == null || m.ParentModuleId == 0)).Any())
+                        throw Oops.Oh($"同级菜单已存在模块名称【{dto.ModuleName}】!");
+                }
+                else
+                {
+                    if (dbClint.Queryable<SysModule>().Where(m => m.ModuleName == dto.ModuleName && m.ModuleId != dto.ModuleId && m.ParentModuleId == dto.ParentModuleId.Value).Any())
+                        throw Oops.Oh($"同级菜单已存在模块名称【{dto.ModuleName}】!");
+                }
+                model = _repository.FirstOrDefault(m=>m.ModuleId==dto.ModuleId.Value);
+                model.ModifyDate = DateTime.Now;
+                model.ModifyUserId = _userManager.UserId;
+                model.ModifyUserName = _userManager.UserName;
+            }
+            else
+            {
+                if (!dto.ParentModuleId.HasValue || dto.ParentModuleId.Value == 0)
+                {
+                    if (dbClint.Queryable<SysModule>().Where(m => m.ModuleName == dto.ModuleName && (m.ParentModuleId == null || m.ParentModuleId == 0)).Any())
+                        throw Oops.Oh($"同级菜单已存在模块名称【{dto.ModuleName}】!");
+                }
+                else
+                {
+                    if (dbClint.Queryable<SysModule>().Where(m => m.ModuleName == dto.ModuleName && m.ParentModuleId == dto.ParentModuleId.Value).Any())
+                        throw Oops.Oh($"同级菜单已存在模块名称【{dto.ModuleName}】!");
+                }
+                model = new SysModule()
+                {
+                    CreateDate = DateTime.Now,
+                    CreateUserId = _userManager.UserId,
+                    CreateUserName = _userManager.UserName,
+                    IsDeleted = false
+                };
+                if (dto.ParentModuleId.HasValue && dto.ParentModuleId > 0)
+                {
+                    var module = _repository.FirstOrDefault(m => m.ModuleId == dto.ParentModuleId.Value);
+                    model.Level = module.Level.Value + 1;
+                    model.ParentModuleName = module.ModuleName;
+                }
+                else
+                {
+                    model.Level = 1;
+                }
+            }
+            model.ModuleName = dto.ModuleName;
+            model.ParentModuleId = dto.ParentModuleId ?? 0;
+            model.ParentModuleName = dto.ParentModuleName;
+            model.Url = dto.Url != null ? dto.Url.Trim() : "";
+            model.IsLeaf = model.Level == 3; //目前最多给到三级
+            model.Icon = dto.Icon;
+            model.SortNo = dto.SortNo ?? 1;
+            model.Code = dto.Code != null ? dto.Code.Trim() : "";
+            model.IsEnabled = dto.IsEnabled;
+
+            long moduleId = dto.ModuleId ?? 0;
+            dbClint.Ado.UseTran(() =>
+            {
+                if (dto.ModuleId.HasValue)
+                    dbClint.Updateable(model).ExecuteCommand();
+                else
+                    moduleId = dbClint.Insertable(model).ExecuteReturnBigIdentity();
+            });
+        }
+
+        /// <summary>
+        /// 删除模块
+        /// </summary>
+        /// <param name="ids"></param>
+        public bool Delete(long[] ids)
+        {
+            List<long> idList = new List<long>(ids);
+            var modules = dbClint.Queryable<SysModule>().Where(m => ids.Contains(m.ModuleId)).ToList();
+            GetAllModuleId(modules, ids, ref idList);
+            var count= dbClint.Updateable<SysModule>().SetColumns(r => new SysModule()
+            {
+                DeleteDate = DateTime.Now,
+                DeleteUserId = _userManager.UserId,
+                DeleteUserName = _userManager.UserName,
+                IsDeleted = true
+            }).Where(r => idList.Contains(r.ModuleId)).ExecuteCommand();
+            return count > 0 ;
+        }
+
+        /// <summary>
+        /// 递归获取所有子模块id
+        /// </summary>
+        /// <param name="modules"></param>
+        /// <param name="moduleIds"></param>
+        /// <param name="idList"></param>
+        private void GetAllModuleId(List<SysModule> modules, long[] moduleIds, ref List<long> idList)
+        {
+            var subModules = modules.Where(m => moduleIds.Contains(m.ParentModuleId.Value)).ToList();
+            if (subModules.Count > 0)
+            {
+                var ids = subModules.Select(m => m.ModuleId).ToArray();
+                idList.AddRange(ids);
+                GetAllModuleId(modules, ids, ref idList);
+            }
+        }
+
     }
 }

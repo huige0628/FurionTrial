@@ -281,6 +281,41 @@ namespace FurionTrial.Application
         {
             return _sysModuleService.GetModuleElementList(dto);
         }
+
+        /// <summary>
+        /// 根据模块id获取模块信息
+        /// </summary>
+        /// <returns></returns>
+        [ApiDescriptionSettings(KeepName = true)]
+        [QueryParameters]
+        public SysModule GetModuleById(long moduleId)
+        {
+            return _sysModuleService.GetModuleById(moduleId);
+        }
+
+        /// <summary>
+        /// 模块添加编辑
+        /// </summary>
+        /// <param name="dto"></param>
+        [ApiDescriptionSettings(KeepName = true)]
+        [HttpPost]
+        public bool ModuleAddEdit([FromBody] ModuleAddEditDto dto)
+        {
+            _sysModuleService.AddEdit(dto);
+            return true;
+        }
+
+        /// <summary>
+        /// 模块删除
+        /// </summary>
+        /// <param name="roleIds"></param>
+        [ApiDescriptionSettings(KeepName = true)]
+        [HttpPost]
+        public bool ModuleRemove([FromBody] long[] roleIds)
+        {
+            return _sysModuleService.Delete(roleIds);
+        }
+
         #endregion
     }
 }

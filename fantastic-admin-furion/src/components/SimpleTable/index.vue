@@ -119,6 +119,7 @@ export default {
                     }
                 })
                 .catch(err => {
+                    console.log('table-load-error', err)
                     this.loading = false
                     const msg = err.response
                         ? err.response.data.msg
