@@ -1,4 +1,5 @@
 ﻿using Furion;
+using FurionTrial.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,8 +17,11 @@ namespace FurionTrial.Web.Core
             //跨域
             services.AddCorsAccessor();
 
-            services.AddControllers()
-                    .AddInjectWithUnifyResult();
+            //自定义返回模型
+            //services.AddControllers().AddInjectWithUnifyResult<FurionTrialRESTfulResultProvider>();
+
+            //默认返回模型
+            services.AddControllers().AddInjectWithUnifyResult();
 
             //SqlSugar注入
             services.AddSqlSugar(new SqlSugar.ConnectionConfig
